@@ -38,6 +38,11 @@ I'm following a 10-phase plan (see PLAN.md):
 9. Show Command
 10. Polish & Documentation
 
+**IMPORTANT**: When we complete a phase, update the Progress Tracker in PLAN.md:
+- Mark the completed phase with [x]
+- Update "Current Phase" to the next phase
+- This helps track progress across sessions
+
 ## How to Help Me
 
 ### When I'm Starting a New Feature

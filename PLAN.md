@@ -78,6 +78,23 @@ Build **got**, a simplified version-control system inspired by Git, implemented 
 
 ## Implementation Phases
 
+### Progress Tracker
+
+- [x] **Phase 1**: Foundation & Repository Initialization ✅
+- [ ] **Phase 2**: Object Storage & Hashing
+- [ ] **Phase 3**: Staging Area (Index)
+- [ ] **Phase 4**: Status Command
+- [ ] **Phase 5**: Commit Creation
+- [ ] **Phase 6**: Commit History
+- [ ] **Phase 7**: Branch Management
+- [ ] **Phase 8**: Checkout (Branch Switching)
+- [ ] **Phase 9**: Show Command
+- [ ] **Phase 10**: Polish & Documentation
+
+**Current Phase**: Phase 2 - Object Storage & Hashing
+
+---
+
 ### Phase 1: Foundation & Repository Initialization
 
 **Goal:** Set up project structure and implement `init` command

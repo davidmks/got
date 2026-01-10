@@ -19,6 +19,27 @@ const (
 	filePerm = 0644 // rw-r--r--: owner can read/write, others can read only
 )
 
+// FindGotDir walks up from the current directory to find the .got directory.
+func FindGotDir() (string, error) {
+	dir, err := os.Getwd()
+	if err != nil {
+		return "", fmt.Errorf("failed to get working directory: %w", err)
+	}
+
+	for {
+		gotPath := filepath.Join(dir, gotDir)
+		if info, err := os.Stat(gotPath); err == nil && info.IsDir() {
+			return gotPath, nil
+		}
+
+		parent := filepath.Dir(dir)
+		if parent == dir {
+			return "", fmt.Errorf("not a got repository (or any parent directory)")
+		}
+		dir = parent
+	}
+}
+
 func Initialize() error {
 	if _, err := os.Stat(gotDir); err == nil {
 		return fmt.Errorf("repository already initialized")

@@ -81,7 +81,7 @@ Build **got**, a simplified version-control system inspired by Git, implemented 
 ### Progress Tracker
 
 - [x] **Phase 1**: Foundation & Repository Initialization ✅
-- [ ] **Phase 2**: Object Storage & Hashing
+- [x] **Phase 2**: Object Storage & Hashing ✅
 - [ ] **Phase 3**: Staging Area (Index)
 - [ ] **Phase 4**: Status Command
 - [ ] **Phase 5**: Commit Creation
@@ -91,7 +91,7 @@ Build **got**, a simplified version-control system inspired by Git, implemented 
 - [ ] **Phase 9**: Show Command
 - [ ] **Phase 10**: Polish & Documentation
 
-**Current Phase**: Phase 2 - Object Storage & Hashing
+**Current Phase**: Phase 3 - Staging Area (Index)
 
 ---
 

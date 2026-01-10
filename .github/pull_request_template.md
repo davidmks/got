@@ -1,3 +1,12 @@
+<!--
+PR Title (becomes squash commit message):
+feat(scope): description
+
+Examples:
+- feat(objects): implement content-addressable storage
+- fix(repository): handle missing directory
+-->
+
 ## Phase [X]: [Phase Name]
 
 ### Goal

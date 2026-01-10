@@ -69,7 +69,9 @@ func TestFindGotDir(t *testing.T) {
 		t.Fatalf("Failed to get current directory: %v", err)
 	}
 	t.Cleanup(func() {
-		os.Chdir(originalDir)
+		if err := os.Chdir(originalDir); err != nil {
+			t.Errorf("Failed to restore directory: %v", err)
+		}
 	})
 
 	if err := os.Chdir(tempDir); err != nil {
@@ -102,7 +104,9 @@ func TestFindGotDirFromSubdirectory(t *testing.T) {
 		t.Fatalf("Failed to get current directory: %v", err)
 	}
 	t.Cleanup(func() {
-		os.Chdir(originalDir)
+		if err := os.Chdir(originalDir); err != nil {
+			t.Errorf("Failed to restore directory: %v", err)
+		}
 	})
 
 	if err := os.Chdir(tempDir); err != nil {
@@ -144,7 +148,9 @@ func TestFindGotDirNotFound(t *testing.T) {
 		t.Fatalf("Failed to get current directory: %v", err)
 	}
 	t.Cleanup(func() {
-		os.Chdir(originalDir)
+		if err := os.Chdir(originalDir); err != nil {
+			t.Errorf("Failed to restore directory: %v", err)
+		}
 	})
 
 	if err := os.Chdir(tempDir); err != nil {

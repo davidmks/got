@@ -61,6 +61,102 @@ func TestInitialize(t *testing.T) {
 	}
 }
 
+func TestFindGotDir(t *testing.T) {
+	tempDir := t.TempDir()
+
+	originalDir, err := os.Getwd()
+	if err != nil {
+		t.Fatalf("Failed to get current directory: %v", err)
+	}
+	t.Cleanup(func() {
+		os.Chdir(originalDir)
+	})
+
+	if err := os.Chdir(tempDir); err != nil {
+		t.Fatalf("Failed to change to temp directory: %v", err)
+	}
+
+	if err := Initialize(); err != nil {
+		t.Fatalf("Initialize() failed: %v", err)
+	}
+
+	gotPath, err := FindGotDir()
+	if err != nil {
+		t.Fatalf("FindGotDir() error = %v", err)
+	}
+
+	expected, err := filepath.EvalSymlinks(filepath.Join(tempDir, ".got"))
+	if err != nil {
+		t.Fatalf("EvalSymlinks() error = %v", err)
+	}
+	if gotPath != expected {
+		t.Errorf("FindGotDir() = %q, want %q", gotPath, expected)
+	}
+}
+
+func TestFindGotDirFromSubdirectory(t *testing.T) {
+	tempDir := t.TempDir()
+
+	originalDir, err := os.Getwd()
+	if err != nil {
+		t.Fatalf("Failed to get current directory: %v", err)
+	}
+	t.Cleanup(func() {
+		os.Chdir(originalDir)
+	})
+
+	if err := os.Chdir(tempDir); err != nil {
+		t.Fatalf("Failed to change to temp directory: %v", err)
+	}
+
+	if err := Initialize(); err != nil {
+		t.Fatalf("Initialize() failed: %v", err)
+	}
+
+	subDir := filepath.Join(tempDir, "src", "deep", "nested")
+	if err := os.MkdirAll(subDir, 0755); err != nil {
+		t.Fatalf("Failed to create subdirectory: %v", err)
+	}
+
+	if err := os.Chdir(subDir); err != nil {
+		t.Fatalf("Failed to change to subdirectory: %v", err)
+	}
+
+	gotPath, err := FindGotDir()
+	if err != nil {
+		t.Fatalf("FindGotDir() error = %v", err)
+	}
+
+	expected, err := filepath.EvalSymlinks(filepath.Join(tempDir, ".got"))
+	if err != nil {
+		t.Fatalf("EvalSymlinks() error = %v", err)
+	}
+	if gotPath != expected {
+		t.Errorf("FindGotDir() = %q, want %q", gotPath, expected)
+	}
+}
+
+func TestFindGotDirNotFound(t *testing.T) {
+	tempDir := t.TempDir()
+
+	originalDir, err := os.Getwd()
+	if err != nil {
+		t.Fatalf("Failed to get current directory: %v", err)
+	}
+	t.Cleanup(func() {
+		os.Chdir(originalDir)
+	})
+
+	if err := os.Chdir(tempDir); err != nil {
+		t.Fatalf("Failed to change to temp directory: %v", err)
+	}
+
+	_, err = FindGotDir()
+	if err == nil {
+		t.Error("FindGotDir() should return error when no repository exists")
+	}
+}
+
 func TestInitializeAlreadyExists(t *testing.T) {
 	tempDir := t.TempDir()
 

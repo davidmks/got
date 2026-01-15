@@ -72,3 +72,8 @@ func Initialize() error {
 
 	return nil
 }
+
+// GetRepoRoot returns the repository root (parent of .got).
+func GetRepoRoot(gotDir string) string {
+	return filepath.Dir(gotDir)
+}

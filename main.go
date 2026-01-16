@@ -21,6 +21,11 @@ func main() {
 			fmt.Fprintf(os.Stderr, "Error: %v\n", err)
 			os.Exit(1)
 		}
+	case "add":
+		if err := commands.Add(os.Args[2:]); err != nil {
+			fmt.Fprintf(os.Stderr, "Error: %v\n", err)
+			os.Exit(1)
+		}
 	default:
 		fmt.Fprintf(os.Stderr, "Unknown command: %s\n", command)
 		printUsage()
@@ -34,4 +39,5 @@ func printUsage() {
 	fmt.Println("  got <command> [arguments]")
 	fmt.Println("\nAvailable commands:")
 	fmt.Println("  init      Initialize a new repository")
+	fmt.Println("  add       Stage files for commit")
 }

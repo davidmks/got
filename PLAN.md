@@ -83,7 +83,7 @@ Build **got**, a simplified version-control system inspired by Git, implemented 
 - [x] **Phase 1**: Foundation & Repository Initialization ✅
 - [x] **Phase 2**: Object Storage & Hashing ✅
 - [x] **Phase 3**: Staging Area (Index) ✅
-- [ ] **Phase 4**: Status Command
+- [x] **Phase 4**: Status Command ✅
 - [ ] **Phase 5**: Commit Creation
 - [ ] **Phase 6**: Commit History
 - [ ] **Phase 7**: Branch Management
@@ -91,7 +91,7 @@ Build **got**, a simplified version-control system inspired by Git, implemented 
 - [ ] **Phase 9**: Show Command
 - [ ] **Phase 10**: Polish & Documentation
 
-**Current Phase**: Phase 4 - Status Command
+**Current Phase**: Phase 5 - Commit Creation
 
 ---
 

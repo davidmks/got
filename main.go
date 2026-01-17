@@ -26,6 +26,11 @@ func main() {
 			fmt.Fprintf(os.Stderr, "Error: %v\n", err)
 			os.Exit(1)
 		}
+	case "status":
+		if err := commands.Status(); err != nil {
+			fmt.Fprintf(os.Stderr, "Error: %v\n", err)
+			os.Exit(1)
+		}
 	default:
 		fmt.Fprintf(os.Stderr, "Unknown command: %s\n", command)
 		printUsage()
@@ -40,4 +45,5 @@ func printUsage() {
 	fmt.Println("\nAvailable commands:")
 	fmt.Println("  init      Initialize a new repository")
 	fmt.Println("  add       Stage files for commit")
+	fmt.Println("  status    Show working tree status")
 }

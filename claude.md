@@ -78,8 +78,14 @@ I'm following a 10-phase plan (see PLAN.md):
 - Use standard Go formatting (gofmt)
 - Prefer explicit error handling over ignoring errors
 - Keep functions focused and small
-- Add comments for exported functions
 - Use meaningful variable names
+
+## Go Documentation Guidelines
+
+- **Exported functions/types**: Must have doc comments starting with the identifier name
+- **Unexported functions**: Only comment if logic is complex
+- **Inline comments**: Explain "why", not "what" - skip if code is self-explanatory
+- **Don't comment**: Obvious code, trivial operations, or restatements of what code does
 
 ## Learning Goals
 
